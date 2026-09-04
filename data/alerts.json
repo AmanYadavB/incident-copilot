@@ -1,0 +1,366 @@
+[
+  {
+    "id": "alert-001",
+    "status": "firing",
+    "labels": {
+      "alertname": "NodeFilesystemAlmostOutOfSpace",
+      "severity": "critical",
+      "service": "node-exporter",
+      "namespace": "monitoring",
+      "instance": "ip-10-0-3-14:9100",
+      "job": "node-exporter",
+      "team": "platform",
+      "mountpoint": "/var"
+    },
+    "annotations": {
+      "summary": "Filesystem on /var has only 6.2% space left",
+      "description": "Node ip-10-0-3-14 mountpoint /var is at 93.8% used and filling. At the current write rate it runs out in ~2h. /var/lib/docker and journald logs are the usual suspects."
+    },
+    "startsAt": "2026-09-04T01:12:47Z",
+    "value": "0.062",
+    "fingerprint": "a1f3c9d2e4b50761"
+  },
+  {
+    "id": "alert-002",
+    "status": "firing",
+    "labels": {
+      "alertname": "KubePodCrashLooping",
+      "severity": "critical",
+      "service": "checkout-worker",
+      "namespace": "prod-orders",
+      "instance": "checkout-worker-7d9c8b6f5-2xk4t",
+      "job": "kube-state-metrics",
+      "team": "orders"
+    },
+    "annotations": {
+      "summary": "Pod prod-orders/checkout-worker-7d9c8b6f5-2xk4t is in CrashLoopBackOff",
+      "description": "Container 'worker' has restarted 9 times in the last 12 minutes, exit code 1. Last state terminated: 'Error'. Started right after the 01:30 deploy of image tag 2026.09.04-a3f21."
+    },
+    "startsAt": "2026-09-04T01:34:10Z",
+    "value": "9",
+    "fingerprint": "b7e21a08c6d94f33"
+  },
+  {
+    "id": "alert-003",
+    "status": "firing",
+    "labels": {
+      "alertname": "CertManagerCertExpiringSoon",
+      "severity": "warning",
+      "service": "cert-manager",
+      "namespace": "cert-manager",
+      "instance": "cert-manager-controller",
+      "job": "cert-manager",
+      "team": "platform"
+    },
+    "annotations": {
+      "summary": "TLS certificate for api.internal.example.com expires in 4 days",
+      "description": "Certificate 'api-internal-tls' in namespace prod is valid until 2026-09-08T09:14:00Z. The ACME HTTP-01 renewal has failed twice: 'order is in state pending'. Check the solver ingress and DNS."
+    },
+    "startsAt": "2026-09-04T00:05:00Z",
+    "value": "345600",
+    "fingerprint": "c0a4b1927de6f854"
+  },
+  {
+    "id": "alert-004",
+    "status": "firing",
+    "labels": {
+      "alertname": "PostgresConnectionPoolExhausted",
+      "severity": "critical",
+      "service": "payments-api",
+      "namespace": "prod-payments",
+      "instance": "postgres-primary:9187",
+      "job": "postgres-exporter",
+      "team": "payments"
+    },
+    "annotations": {
+      "summary": "payments-api database connection pool at 100/100",
+      "description": "pg_stat_activity shows 100 active connections, max_connections is 100. 38 are 'idle in transaction' for >90s. New requests to payments-api are erroring with 'remaining connection slots are reserved'."
+    },
+    "startsAt": "2026-09-04T02:41:22Z",
+    "value": "100",
+    "fingerprint": "d5f8021ac37b9e46"
+  },
+  {
+    "id": "alert-005",
+    "status": "firing",
+    "labels": {
+      "alertname": "KafkaConsumerGroupLagHigh",
+      "severity": "warning",
+      "service": "orders-consumer",
+      "namespace": "prod-orders",
+      "instance": "kafka-broker-2:9308",
+      "job": "kafka-exporter",
+      "team": "orders",
+      "consumergroup": "orders-fulfilment"
+    },
+    "annotations": {
+      "summary": "Consumer group orders-fulfilment lag is 247k messages and growing",
+      "description": "Lag on topic 'orders.events' has gone from 3k to 247k in 20 minutes. Consumer group has 4 members, all alive. Processing rate dropped from ~1200/s to ~150/s around 02:20."
+    },
+    "startsAt": "2026-09-04T02:38:55Z",
+    "value": "247113",
+    "fingerprint": "e2b90c47a1d6538f"
+  },
+  {
+    "id": "alert-006",
+    "status": "firing",
+    "labels": {
+      "alertname": "ContainerOOMKilled",
+      "severity": "critical",
+      "service": "recommendation-svc",
+      "namespace": "prod",
+      "instance": "recommendation-svc-6b4d7c9f8-lm2pq",
+      "job": "kube-state-metrics",
+      "team": "data"
+    },
+    "annotations": {
+      "summary": "recommendation-svc has been OOMKilled 5 times in 15 minutes",
+      "description": "Container 'app' killed with reason OOMKilled. Memory limit is 512Mi; working set peaks at 511Mi shortly before each kill. No recent deploy — traffic is up 40% vs the same time yesterday."
+    },
+    "startsAt": "2026-09-04T03:02:18Z",
+    "value": "5",
+    "fingerprint": "f4c1a5d820e79b63"
+  },
+  {
+    "id": "alert-007",
+    "status": "firing",
+    "labels": {
+      "alertname": "KubeNodeNotReady",
+      "severity": "critical",
+      "service": "kubelet",
+      "namespace": "kube-system",
+      "instance": "ip-10-0-2-19",
+      "job": "kubelet",
+      "team": "platform"
+    },
+    "annotations": {
+      "summary": "Node ip-10-0-2-19 has been NotReady for 7 minutes",
+      "description": "Kubelet on ip-10-0-2-19 stopped posting status. Condition Ready=Unknown. 22 pods on this node, 6 of them single-replica. Node was healthy until an abrupt drop in all metrics at 03:15."
+    },
+    "startsAt": "2026-09-04T03:22:40Z",
+    "value": "1",
+    "fingerprint": "0a9d3f61c4b8e275"
+  },
+  {
+    "id": "alert-008",
+    "status": "firing",
+    "labels": {
+      "alertname": "HighHttp5xxRate",
+      "severity": "critical",
+      "service": "nginx-ingress",
+      "namespace": "ingress-nginx",
+      "instance": "nginx-ingress-controller-9fbc4",
+      "job": "nginx-ingress",
+      "team": "sre"
+    },
+    "annotations": {
+      "summary": "Ingress 5xx rate is 13.4% over the last 5 minutes",
+      "description": "5xx responses across all ingress hosts jumped from <0.2% to 13.4% at 03:18. Breakdown: 502 (mostly), some 504. Upstream 'payments-api' and 'checkout-api' account for ~90% of the errors."
+    },
+    "startsAt": "2026-09-04T03:19:05Z",
+    "value": "0.134",
+    "fingerprint": "1b8e2c05f7a3d964"
+  },
+  {
+    "id": "alert-009",
+    "status": "firing",
+    "labels": {
+      "alertname": "ApiLatencyP99High",
+      "severity": "warning",
+      "service": "payments-api",
+      "namespace": "prod-payments",
+      "instance": "payments-api-5c7d9b8f6-abc12",
+      "job": "payments-api",
+      "team": "payments"
+    },
+    "annotations": {
+      "summary": "payments-api p99 latency is 3.8s (SLO 1.0s)",
+      "description": "p99 request latency has been above the 1s SLO for 11 minutes, currently 3.8s. p50 is still 40ms. Slow endpoints are all DB-backed (/charge, /refund). Correlates with alert-004."
+    },
+    "startsAt": "2026-09-04T02:44:00Z",
+    "value": "3.81",
+    "fingerprint": "2c9f3a17e0b6d485"
+  },
+  {
+    "id": "alert-010",
+    "status": "firing",
+    "labels": {
+      "alertname": "PersistentVolumeFillingUp",
+      "severity": "warning",
+      "service": "postgres",
+      "namespace": "prod-data",
+      "instance": "kubelet",
+      "job": "kubelet",
+      "team": "data",
+      "persistentvolumeclaim": "data-postgres-0"
+    },
+    "annotations": {
+      "summary": "PVC prod-data/data-postgres-0 is 87% full",
+      "description": "Predicted to fill in approximately 9 hours based on the last 6h growth rate. WAL directory has grown 14GB since 22:00 — a long-running replication slot or archiver backlog is likely."
+    },
+    "startsAt": "2026-09-04T03:40:12Z",
+    "value": "0.87",
+    "fingerprint": "3da0417f2c9b6e58"
+  },
+  {
+    "id": "alert-011",
+    "status": "firing",
+    "labels": {
+      "alertname": "KubeDeploymentRolloutStuck",
+      "severity": "warning",
+      "service": "checkout-api",
+      "namespace": "prod-orders",
+      "instance": "kube-state-metrics",
+      "job": "kube-state-metrics",
+      "team": "orders"
+    },
+    "annotations": {
+      "summary": "Deployment prod-orders/checkout-api rollout has been stuck for 18 minutes",
+      "description": "Rollout of revision 47 is stuck at 2/5 updated replicas. New pods are Running but never become Ready — readiness probe GET /ready returns 503. Old pods still serving. maxUnavailable=0, so traffic is fine for now."
+    },
+    "startsAt": "2026-09-04T01:52:30Z",
+    "value": "18",
+    "fingerprint": "4eb1520a3d7c9f61"
+  },
+  {
+    "id": "alert-012",
+    "status": "firing",
+    "labels": {
+      "alertname": "RedisMemoryHigh",
+      "severity": "warning",
+      "service": "redis-cache",
+      "namespace": "prod",
+      "instance": "redis-cache-0:9121",
+      "job": "redis-exporter",
+      "team": "platform"
+    },
+    "annotations": {
+      "summary": "redis-cache memory usage at 96% of maxmemory",
+      "description": "used_memory is 3.84GB of a 4GB maxmemory. Eviction policy is allkeys-lru and evicted_keys is climbing (~800/s). Cache hit rate has dropped from 94% to 71% in 10 minutes."
+    },
+    "startsAt": "2026-09-04T03:05:44Z",
+    "value": "0.96",
+    "fingerprint": "5fc2631b4e8da072"
+  },
+  {
+    "id": "alert-013",
+    "status": "firing",
+    "labels": {
+      "alertname": "TargetDown",
+      "severity": "warning",
+      "service": "billing-svc",
+      "namespace": "prod-payments",
+      "instance": "billing-svc:9102",
+      "job": "billing-svc",
+      "team": "payments"
+    },
+    "annotations": {
+      "summary": "Prometheus has failed to scrape billing-svc for 6 minutes",
+      "description": "Scrape of billing-svc:9102/metrics is failing with 'context deadline exceeded'. The service's own /health returns 200. Could be the metrics endpoint blocking on a slow dependency, or a NetworkPolicy change."
+    },
+    "startsAt": "2026-09-04T03:28:00Z",
+    "value": "0",
+    "fingerprint": "60d3742c5f9eb183"
+  },
+  {
+    "id": "alert-014",
+    "status": "firing",
+    "labels": {
+      "alertname": "CronJobFailed",
+      "severity": "warning",
+      "service": "db-backup",
+      "namespace": "prod-data",
+      "instance": "kube-state-metrics",
+      "job": "kube-state-metrics",
+      "team": "data"
+    },
+    "annotations": {
+      "summary": "CronJob prod-data/db-backup has failed its last 2 runs",
+      "description": "The 02:00 and 03:00 runs of db-backup exited non-zero. Job log ends with 'pg_dump: error: connection to server failed: FATAL: too many connections'. No successful backup since 01:00."
+    },
+    "startsAt": "2026-09-04T03:04:00Z",
+    "value": "2",
+    "fingerprint": "71e4853d609fc294"
+  },
+  {
+    "id": "alert-015",
+    "status": "firing",
+    "labels": {
+      "alertname": "NginxUpstreamConnectionRefused",
+      "severity": "critical",
+      "service": "nginx-ingress",
+      "namespace": "ingress-nginx",
+      "instance": "nginx-ingress-controller-9fbc4",
+      "job": "nginx-ingress",
+      "team": "sre",
+      "upstream": "auth-svc"
+    },
+    "annotations": {
+      "summary": "Ingress cannot connect to upstream auth-svc: connection refused",
+      "description": "nginx logs show 'connect() failed (111: Connection refused) while connecting to upstream' for auth-svc.prod.svc:8080. auth-svc has 0/3 endpoints in the Service — all pods failing their startup probe."
+    },
+    "startsAt": "2026-09-04T03:31:20Z",
+    "value": "0",
+    "fingerprint": "82f5964e710ad3a5"
+  },
+  {
+    "id": "alert-016",
+    "status": "firing",
+    "labels": {
+      "alertname": "KubeDeploymentReplicasMismatch",
+      "severity": "warning",
+      "service": "notifications-worker",
+      "namespace": "prod",
+      "instance": "kube-state-metrics",
+      "job": "kube-state-metrics",
+      "team": "platform"
+    },
+    "annotations": {
+      "summary": "Deployment prod/notifications-worker has 1/4 replicas available for 21 minutes",
+      "description": "3 pods are Pending. kubectl describe shows 'FailedScheduling: 0/6 nodes are available: 3 Insufficient cpu, 3 node(s) had untolerated taint'. Cluster CPU requests are at 91%."
+    },
+    "startsAt": "2026-09-04T03:14:00Z",
+    "value": "0.25",
+    "fingerprint": "93a6075f821be4b6"
+  },
+  {
+    "id": "alert-017",
+    "status": "firing",
+    "labels": {
+      "alertname": "NodeCPUSaturation",
+      "severity": "warning",
+      "service": "node-exporter",
+      "namespace": "monitoring",
+      "instance": "ip-10-0-2-9:9100",
+      "job": "node-exporter",
+      "team": "platform"
+    },
+    "annotations": {
+      "summary": "Node ip-10-0-2-9 CPU is 97% used, load15 is 24 on 8 cores",
+      "description": "System has been CPU-saturated for 9 minutes. Top consumer is a single pod 'report-generator-adhoc' in namespace prod-data burning ~6 cores with no CPU limit set."
+    },
+    "startsAt": "2026-09-04T03:36:10Z",
+    "value": "0.97",
+    "fingerprint": "a4b7186092c1f5c7"
+  },
+  {
+    "id": "alert-018",
+    "status": "firing",
+    "labels": {
+      "alertname": "CoreDNSResolutionFailures",
+      "severity": "critical",
+      "service": "coredns",
+      "namespace": "kube-system",
+      "instance": "coredns-6d4b75cb6d-w8ph2",
+      "job": "coredns",
+      "team": "platform"
+    },
+    "annotations": {
+      "summary": "CoreDNS SERVFAIL rate is 18% for external names",
+      "description": "coredns_dns_responses_total{rcode=\"SERVFAIL\"} has spiked since 03:20. In-cluster names resolve fine; external names (payment gateway, S3) intermittently fail. One of the two upstream resolvers in /etc/resolv.conf is timing out."
+    },
+    "startsAt": "2026-09-04T03:24:33Z",
+    "value": "0.18",
+    "fingerprint": "b5c8297103d2a6d8"
+  }
+]

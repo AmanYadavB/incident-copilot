@@ -1,0 +1,28 @@
+# Claude Code — the personal "build-it-yourself" guardrail stays private (2026-09-04).
+# To show the "I fenced the AI out of the core code" signal in the public repo,
+# un-ignore the hook script:  !.claude/hooks/guard.py
+.claude/
+
+# --- Python ---
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# --- Local env / secrets ---
+.env
+.env.*
+!.env.example
+
+# --- Data / DB (SQLite lands here at M1) ---
+*.db
+*.sqlite
+*.sqlite3
+
+# --- OS / editor ---
+.DS_Store
+Thumbs.db

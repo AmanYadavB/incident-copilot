@@ -1,0 +1,4 @@
+# Incident Copilot - runtime dependencies (M0)
+# Pinned for reproducibility. Regenerate: pip install -U <pkg> && pip freeze
+fastapi==0.141.1
+uvicorn[standard]==0.52.4

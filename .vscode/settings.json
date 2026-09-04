@@ -1,0 +1,18 @@
+{
+  "// note": "Keeps the Incident Copilot guardrail out of sight and read-only in the editor. The real lock is a filesystem ACL — see the project guardrail notes. Editing this file back does NOT unlock the guard.",
+  "files.exclude": {
+    "**/.claude/settings.local.json": true,
+    "**/.claude/hooks": true
+  },
+  "search.exclude": {
+    "**/.claude/settings.local.json": true,
+    "**/.claude/hooks": true
+  },
+  "files.readonlyInclude": {
+    "**/.claude/settings.local.json": true,
+    "**/.claude/hooks/**": true
+  },
+  "files.watcherExclude": {
+    "**/.claude/hooks/**": true
+  }
+}
